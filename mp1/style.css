@@ -72,3 +72,55 @@ body {
     Helvetica,
     sans-serif;
 }
+div.bill{
+    background: white;
+    border-radius: 20px;
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    padding: 10px;
+}
+.bill *{
+    margin: 10px;
+}
+.bill h2{
+    display: inline-block;
+}
+hr{
+    border: 1px solid black;
+}
+.bill_t{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 25px;
+    width: 90%;
+    justify-items: left;
+    margin: 5px;
+}
+.d{
+    background-size: 25px 25px;
+    background-image: url('images/delete.png');
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.bill_final{
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 25px;
+    width: 90%;
+    justify-items: left;
+    margin: 5px;
+}
+.alert{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: fit-content;
+    height: fit-content;
+    padding: 15px;
+    background-color: white;
+    border-radius: 20px;
+    border: 2px solid black;
+
+}

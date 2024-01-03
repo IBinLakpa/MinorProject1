@@ -1,23 +1,53 @@
-function plus(operator){
-    productId=document.getElementById(operator);
-    qty=parseInt(productId.innerText);
-    console.log('+');
-    if(qty==100){
-        alert("limit reached");
+function set_total(){
+    var elements = document.getElementsByClassName('subTotal');
+
+    // Initialize a variable to store the sum
+    var sum = 0;
+
+    // Loop through each element and extract the number from its text content
+    for (var i = 0; i < elements.length; i++) {
+        // Extract the number using a regular expression
+        var number = parseInt(elements[i].innerText.match(/[\d.]+/));
+
+        // Add the extracted number to the sum (if it's a valid number)
+        if (!isNaN(number)) {
+            sum += number;
+        }
     }
-    else{
-        productId.innerText=qty+1;
+    document.getElementById('g_total').innerText=sum;
+
+}
+function plus(operator) {
+    var productId = document.getElementById(operator);
+    var subTotalElement = document.querySelector(".subTotal." + operator);
+    var rateElement = document.querySelector(".rate." + operator);
+
+    var rate = parseInt(rateElement.innerText);
+    var qty = parseInt(productId.innerText);
+
+    if (qty == 100) {
+        alert("Limit reached");
+    } else {
+        productId.innerText = ++qty;
+        subTotalElement.innerText = rate * qty;
+        set_total();
     }
 }
 
 function minus(operator){
-    productId=document.getElementById(operator);
-    qty=parseInt(productId.innerText);
+    var productId = document.getElementById(operator);
+    var subTotalElement = document.querySelector(".subTotal." + operator);
+    var rateElement = document.querySelector(".rate." + operator);
+
+    var rate = parseInt(rateElement.innerText);
+    var qty = parseInt(productId.innerText);
     if(qty==0){
         alert('invalid amount');
     }
     else{
-        productId.innerText=qty-1;
+        productId.innerText=--qty;
+        subTotalElement.innerText = rate * qty;
+        set_total();
     }
 }
 
@@ -26,7 +56,7 @@ function startInterval(operator,elementId) {
         minus(elementId);
         intervalId = setInterval(function () {
             minus(elementId);
-        }, 500);
+        }, 250);
     } else if(operator==='+') {
         plus(elementId);
         intervalId = setInterval(function () {
@@ -39,12 +69,32 @@ function stopInterval() {
     clearInterval(intervalId);
 }
 
-function addAlert() {
+function notification(msg) {
     var newDiv = document.createElement('div');
-    newDiv.innerHTML = 'This is a dynamically created div!';
+    newDiv.innerHTML = msg;
     newDiv.classList.add('alert');
     document.body.appendChild(newDiv);
     setTimeout(function () {
         document.body.removeChild(newDiv);
-    }, 3000); // 3000 milliseconds = 3 seconds
+    }, 1500);
+}
+
+function getFirstWord(inputString) {
+    // Trim leading and trailing spaces and then split the string into an array of words
+    var words = inputString.trim().split(/\s+/);
+
+    // Return the first word (or an empty string if there are no words)
+    return words.length > 0 ? words[0] : '';
+}
+
+function del(identifier){
+    // Get a reference to the elements with the specified class name
+    var elementsToRemove = document.getElementsByClassName(identifier);
+    notification(getFirstWord(elementsToRemove[0].innerText)+" has been deleted");
+
+    // Remove all elements with the specified class
+    while (elementsToRemove.length > 0) {
+        elementsToRemove[0].remove();
+    }
+    set_total();
 }

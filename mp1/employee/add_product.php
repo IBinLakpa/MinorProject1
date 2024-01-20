@@ -23,10 +23,6 @@ if (isset($_POST['submit'])) {
     $targetFile = $targetDirectory . $productId.'.'.$ext;
     move_uploaded_file($_FILES["pic"]["tmp_name"], $targetFile);
 
-    // Update the product with the correct image path
-    $update = "UPDATE products SET img_path = '$targetFile' WHERE product_id = $productId";
-    mysqli_query($conn, $update);
-
     header('location:add_product.php');
     exit();
 }
@@ -44,15 +40,20 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-    <?php @include 'bar.php'; ?>
+    <?php 
+        @include 'bar.php';
+        @include '../data_entry/f.php'; 
+    ?>
     <div class="form-container">
         <form action="" method="post" enctype="multipart/form-data">
             <h3>add product</h3>
             <input type="text" name="name" required placeholder="enter product name">
-            <input type="file" name="pic" required accept="image/png, image/jpeg">
-            <?php
-                require '../data_entry/category.php';
-            ?>
+            <input type="file" name="pic" required accept="image/jpeg">
+            <select name="category_id" required>
+                <?php
+                    display_category($conn);
+                ?>
+            </select>
             <input type="number" name="price" required placeholder="enter price">
             <input type="submit" name="submit" value="Add Product" class="form-btn">
         </form>

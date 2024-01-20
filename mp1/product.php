@@ -1,13 +1,24 @@
 <?php
+    include_once 'data_entry/f.php';
     $id=$row["product_id"];
-    $topic = $row["name"];
+    $name = $row["name"];
     $rate = $row["rate"];
-    $rate = $row["category_id"];
-    echo "<section>
-       <h3 id=#$id><a href='post.php?post=$id'>$topic</a></h3>
-       <span>-By $by</span>
-       <div class='blog-content'>$content</div>
-       <span>$timestamp<br>#$id</span>
-    </section>";
- 
+    $category = get_category($conn,$row["category_id"]);
+    $qty = get_qty($id);
 ?>
+<section class="product">
+    <img src="product_img/<?php echo $id; ?>.jpg">
+    <article>
+        <h1><?php echo $name; ?></h1>
+        <h1><?php echo $category; ?></h1>
+        <h1>Rs <span class='rate _<?php echo $id; ?>'><?php echo $rate; ?></span></h1>
+        <div class="qty">
+            <span class="sub b" onclick="alu('-', '_<?php echo $id; ?>')" >-</span>
+            <span class="q" id='_<?php echo $id; ?>'><?php echo $qty; ?></span>
+            <span class="add b" onclick="alu('+', '_<?php echo $id; ?>')" >+</span>
+        </div>
+        <div class='tag'>
+        #<?php echo $id; ?>
+        </div>
+    </article>
+</section>

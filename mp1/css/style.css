@@ -7,57 +7,9 @@
    outline: none; border:none;
    text-decoration: none;
 }
-.container{
-   min-height: 100vh;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   padding:20px;
-}
-
-.container .content{
-   text-align: center;
-   width: 100%;
-}
-
-.container .content h3{
-   font-size: 30px;
-   color:#333;
-}
-
-.container .content h3 span{
-   background: crimson;
-   color:#fff;
-   border-radius: 5px;
-   padding:0 15px;
-}
-
-.container .content h1{
-   font-size: 50px;
-   color:#333;
-}
-
-.container .content h1 span{
-   color:crimson;
-}
-
-.container .content p{
-   font-size: 25px;
-   margin-bottom: 20px;
-}
-
-.container .content .btn{
-   display: inline-block;
-   padding:10px 30px;
-   font-size: 20px;
-   background: #333;
-   color:#fff;
-   margin:0 5px;
-   text-transform: capitalize;
-}
-
-.container .content .btn:hover{
-   background: crimson;
+body{
+   background-color: #eee;
+   margin-top: 40px;
 }
 
 .form-container{
@@ -80,7 +32,7 @@
    width: 500px;
 }
 
-.form-container form h3{
+form h3{
    text-align: center;
    font-size: 30px;
    text-transform: uppercase;
@@ -88,8 +40,8 @@
    color:#333;
 }
 
-.form-container form input,
-.form-container form select{
+input,
+select{
    width: 100%;
    padding:10px 15px;
    font-size: 17px;
@@ -102,7 +54,7 @@
    background: #fff;
 }
 
-.form-container form .form-btn{
+form .form-btn{
    background: #fbd0d9;
    color:crimson;
    text-transform: capitalize;
@@ -110,7 +62,7 @@
    cursor: pointer;
 }
 
-.form-container form .form-btn:hover{
+.form-btn:hover{
    background: crimson;
    color:#fff;
 }
@@ -134,56 +86,119 @@
    font-size: 20px;
    padding:10px;
 }
-textarea#blog_content{
-   columns: auto;
-   width: 100%;
-   padding:10px 15px;
-   font-size: 17px;
-   margin:8px 0;
-   background: #eee;
-   border-radius: 5px;
-   min-height: 200px;
-   height: fit-content;
-}
 section{
-   max-width: 70%;
+   width: fit-content;
    height: fit-content;
-   display: block;
+   display: flex;
    align-items: center;
    justify-content: center;
-   margin: 30px auto;
-   margin-top: 60px;
    word-wrap: break-word;
+   margin: 10px 0;
    padding:20px;
-   background: #eee;
+   background: white;
    border-radius: 5px;
    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-section span{
-   padding: 20px;
-   font-size: 10px;
+section *{
+   display: inline-block;
+   max-width: 200px;
+   max-height: 200px;
+   margin: 0 10px;
+   align-self: center;
+}
+section article{
+   width: 250px;
+}
+section img{
+   border-right: solid black 2px;
+}
+.qty{
+   display: flex;
+   text-align: justify;
+   width: fit-content;
+   border: black 2px solid;
+   border-radius: 5px;
+}
+article h1{
+   display: block;
+}
+article .tag{
+   color: #999;
    text-align: right;
 }
-section *{
+.qty:hover{
+   cursor: pointer;
+}
+.qty span{
+   user-select:none;
+   margin: 0;
+   padding: 0 10px;
+   flex: 1;
+}
+.qty .sub{
+   user-select:none;
+   border-right: black 2px solid;
+}
+.qty .add{
+   user-select:none;
+   border-left: black 2px solid;
+}
+.product_display{
+   width: 100%;
+   display: flex;
+   margin: 50px 0;
+   justify-content: space-evenly;
+   flex-wrap: wrap;
+}
+.d{
+   width: 20px;
+   height: 20px;
+}
+.bill_t{
+   display: grid;
+   padding: 20px;
+   gap: 5%;
+   grid-template-columns:auto auto auto auto auto;
+   
+}
+.bill{
+   width: 500px;
+   min-width: 30%;
+   padding: 20px;
+   border-radius: 5px;
+   margin: auto;
+   margin-top: 70px;
    display: block;
-   font-size: 20px;
+   background-color: white;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-.blog-content {
-   text-align: left;
-   word-wrap: break-word;
-   max-width: 90%; 
-   margin: 0 auto; 
+hr{
+   width: 100%;
+   border-bottom: black 2px solid;
 }
-.container a{
-   color: black;
-   margin: 5px;
-   width: fit-content;
-   padding: 5px;
-   border-radius: 2px;
-   border: none;
-   background-color: #eee;
+.bill h1{
+   text-align: center;
 }
-.container a:hover, a.current{
-   background-color: black;
-   color: white;
+.total{
+   display: block;
+   text-align: right;
+   margin-right: auto;
+}
+.total *{
+   display: inline-block;
+}
+.bill_data{
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+   margin: 20px 0px;
+   margin-top: 0;
+}
+.item_list{
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr;
+   margin: 20px 0px;
+}
+.pagination{
+   text-align: center;
+
 }

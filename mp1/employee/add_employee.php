@@ -3,7 +3,7 @@
 if (isset($_POST['submit'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $phone_no = mysqli_real_escape_string($conn, $_POST['phone_no']);
-    $select = "SELECT * FROM customers WHERE email = '$email'||phone_no = '$phone_no'";
+    $select = "SELECT * FROM employees WHERE email = '$email'||phone_no = '$phone_no'";
     $result = mysqli_query($conn, $select);
     if(mysqli_num_rows($result) > 0){
         $row = mysqli_fetch_array($result);
@@ -18,13 +18,11 @@ if (isset($_POST['submit'])) {
         $error['pwd']='Passwords do not match';
     }
     if (!isset($error)) {
-        $f_name = mysqli_real_escape_string($conn, $_POST['f_name']);
-        $m_name = mysqli_real_escape_string($conn, $_POST['m_name']);
-        $l_name = mysqli_real_escape_string($conn, $_POST['l_name']);
+        $name = mysqli_real_escape_string($conn, $_POST['name']);
         $dob = mysqli_real_escape_string($conn, $_POST['dob']);
         $pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $insert = "INSERT INTO employees (f_name, m_name, l_name, email, phone_no, pwd_hash, dob) 
-            VALUES ('$f_name', '$m_name', '$l_name', '$email', '$phone_no', '$pass', '$dob')";
+        $insert = "INSERT INTO employees (fullname, email, phone_no, pwd_hash, dob) 
+            VALUES ('$name', '$email', '$phone_no', '$pass', '$dob')";
         mysqli_query($conn, $insert);
         header('location:add_employee.php');
         exit();
@@ -49,7 +47,7 @@ if (isset($_POST['submit'])) {
         <form action="" method="post">
             <h3>add employee</h3>
             <?php
-                require '../data_entry/name.php';
+                echo '<input type="text" name="name" required placeholder="enter your full name">';
                 require '../data_entry/mail.php';
                 require '../data_entry/phone.php';
                 echo'<input type="date" name="dob" required placeholder="Enter your date of birth">';

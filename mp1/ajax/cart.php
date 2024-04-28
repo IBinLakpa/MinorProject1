@@ -82,8 +82,4 @@
                 echo json_encode(['error' => 'Invalid operation']);
                 break;
         }
-    } else {
-        // Invalid request
-        http_response_code(400);
-        echo json_encode(['error' => 'Invalid request']);
-    }
+    } 

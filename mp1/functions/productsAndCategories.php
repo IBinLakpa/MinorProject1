@@ -1,12 +1,5 @@
 <?php
-    function get_conn(){
-        $conn = mysqli_connect('localhost', 'root', '', 'online_storefront');
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-        return $conn;
-    }
-    $conn=get_conn();
+    include_once '../config.php';
     function get_indent($x){
         $s='';
         for($i=1;$i<=$x;$i++){
@@ -15,9 +8,9 @@
         return $s;
     }
     //returns categories as options for select
-    function display_category($conn=NULL, $id = 0, $x = 1) {
+    function display_category($conn = NULL, $id = 0, $x = 1, $selected = '') {
         if (!$conn) {
-            $conn=get_conn();
+            $conn = get_conn();
         }
         // Initialize an empty string to store the generated HTML
         $html = "";
@@ -25,29 +18,32 @@
         // Select categories with the given root_category
         $sql = "SELECT category_id, category_name FROM categories WHERE root_category = $id";
         $result = mysqli_query($conn, $sql);
-        
     
         // Check if there are any categories
         if ($result->num_rows > 0) {
             // Loop through each row in the result set
             while ($row = $result->fetch_assoc()) {
                 // Get category_id and category_name from the row
-                $id = $row['category_id'];
+                $cat_id = $row['category_id'];
                 $name = $row['category_name'];
+    
+                // Check if this category is selected
+                $selected_attr = ($cat_id == $selected) ? 'selected' : '';
     
                 // Generate indentation based on the level
                 $space = get_indent($x);
     
                 // Append the <option> element with the category information to the HTML
-                $html .= '<option value=' . $id . '>' . $space . $name . '</option>';
+                $html .= '<option value="' . $cat_id . '" ' . $selected_attr . '>' . $space . $name . '</option>';
     
                 // Recursively call the function for subcategories and append the result
-                $html .= display_category($conn, $id, $x + 1);
+                $html .= display_category($conn, $cat_id, $x + 1, $selected);
             }
         }
         // Return the accumulated HTML
         return $html;
     }
+    
     function get_subcategory_list($id, $conn=NULL) {
         if (!$conn) {
             $conn=get_conn();

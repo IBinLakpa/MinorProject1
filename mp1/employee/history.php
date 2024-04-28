@@ -14,7 +14,6 @@
         include 'bar.php';
         include '../functions/history.php';
                 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-                $id= $_SESSION['user_id'];
                 
             ?>
             <link rel="stylesheet" href="../css/order.css?84561">
@@ -27,7 +26,7 @@
                 <b>Delivery Status</b>
                 <b>Total Cost</b>
                 <?php
-                echo get_history("WHERE customer_id = $id", $page);
+                echo get_history();
                 ?>
             </div>
     </body>

@@ -1,3 +1,21 @@
+function set_total(){
+    var elements = document.getElementsByClassName('subTotal');
+    // Initialize a variable to store the sum
+    var sum = 0;
+    // Loop through each element and extract the number from its text content
+    for (var i = 0; i < elements.length; i++) {
+        // Extract the number using a regular expression
+        var number = parseInt(elements[i].innerText.match(/[\d.]+/));
+
+        // Add the extracted number to the sum (if it's a valid number)
+        if (!isNaN(number)) {
+            sum += number;
+        }
+    }
+    if(document.getElementById('g_total')){
+        document.getElementById('g_total').innerText=sum;
+    }
+}
 function togglemenu() {
     var bar = document.querySelector('.barcontent');
     var menu = document.querySelector('.menu');

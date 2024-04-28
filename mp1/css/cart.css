@@ -5,6 +5,9 @@
     border-radius: 5px;
     margin: 20px;
 }
+img.d{
+   height: 15px;
+}
 .bill_t{
     display: grid;
     padding: 20px;
@@ -13,7 +16,7 @@
     
  }
  .bill{
-    width: 500px;
+    width: 700px;
     min-width: 30%;
     padding: 20px;
     border-radius: 5px;

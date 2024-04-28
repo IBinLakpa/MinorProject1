@@ -35,4 +35,5 @@
     </form>
     <a href="cart.php"><img src="../images/icons/cart.svg" alt="" class="cart svg-image"></a>
 </header>
+<a href="cart.php"><img src="../images/icons/cart.svg" alt="" class="cart svg-image"></a>
 

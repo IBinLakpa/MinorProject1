@@ -11,7 +11,7 @@
 
 <body>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="script.js"></script>
+    <script src="script.js?8946531"></script>
     
         <?php
         @include_once '../ajax/cart.php';
@@ -60,7 +60,7 @@
             exit();
         }
         ?>
-        <link rel="stylesheet" href="../css/cart.css?3898">
+        <link rel="stylesheet" href="../css/cart.css?8451">
         <div class="bill">
             <h1>Bill</h1>
             <div class="bill_t">
@@ -86,14 +86,14 @@
                     $sub = $rate * $qty;
                     $gross+=$sub;
                     echo '<h5 class="_' . $id . '">' . $name . '</h5>' .
-    '<h5 class="_' . $id . '">Rs <span class="rate _' . $id . '">' . $rate . '</span></h5>' .
-    '<div class="qty _' . $id . '">' .
-        '<span class="sub b" onclick="alu(\'-\', \'_' . $id . '\')">-</span>' .
-        '<span class="q" id="_' . $id . '">' . $qty . '</span>' .
-        '<span class="add b" onclick="alu(\'+\', \'_' . $id . '\')">+</span>' .
-    '</div>' .
-    '<h5 class="_' . $id . '">Rs <span class="subTotal _' . $id . '">' . $sub . '</span></h5>' .
-    '<img src="../images/icons/delete.png" alt="Delete" class="d _' . $id . '" onclick="del(\'_' . $id . '\')">';
+                        '<h5 class="_' . $id . '">Rs <span class="rate _' . $id . '">' . $rate . '</span></h5>' .
+                        '<div class="qty _' . $id . '">' .
+                            '<span class="sub b" onclick="alu(\'-\', \'_' . $id . '\')">-</span>' .
+                            '<span class="q" id="_' . $id . '">' . $qty . '</span>' .
+                            '<span class="add b" onclick="alu(\'+\', \'_' . $id . '\')">+</span>' .
+                        '</div>' .
+                        '<h5 class="_' . $id . '">Rs <span class="subTotal _' . $id . '">' . $sub . '</span></h5>' .
+                        '<img src="../images/icons/delete.png" alt="Delete" class="d _' . $id . '" onclick="del(\'_' . $id . '\')">';
                 }
             }
             echo '

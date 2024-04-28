@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" href="../css/bar.css?465456">
+<link rel="stylesheet" href="../css/bar.css?784956">
 <header>
     <img src="../images/icons/menu.svg" alt="menu" class="menu svg-image" onclick="togglemenu()">
     <div class="barcontent">
@@ -14,7 +14,7 @@
                     <div class="dropdown">
                         <div class="dropbtn">Hi '.$_SESSION['name'].' ▼</div>
                         <div class="dropdown-content">
-                            <a href="profile.php" class="btn">My Profile</a>
+                            
                             <a href="history.php" class="btn">History</a>
                             <a href="signout.php" class="btn" onclick="confirmSignOut()">Signout</a>
                         </div>
@@ -28,7 +28,7 @@
             }
         ?>
     </div>
-    <a href="cart.php"><img src="../images/icons/cart.svg" alt="" class="cart svg-image"></a>
+    
 </header>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="script.js?50"></script>

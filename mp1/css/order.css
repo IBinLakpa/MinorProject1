@@ -1,0 +1,20 @@
+.body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.history{
+    position: absolute;
+    margin: auto;
+    display: grid;
+    gap: 5px;
+    grid-template-columns: 0.5fr 0.5fr 2fr 0.5fr 0.5fr 0.5fr;
+    background-color: white;
+    border-radius: 5px;
+    width: 700px;
+    height: fit-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

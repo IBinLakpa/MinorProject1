@@ -1,24 +1,6 @@
 <?php
-    function product_list($category = '', $page = 1) {
-        // Set offset and limit
-        $itemsPerPage = 30;
-        $offset = ($page - 1) * $itemsPerPage;
-        $limitClause = "LIMIT $itemsPerPage";
-        $offset = ($offset != 0) ? "OFFSET $offset" : '';
-    
-        // Initialize database connection
-        $conn = get_conn();
-        $details = '';
-    
-        // Construct the SQL query with optional category filter
-        $sql = "SELECT p.*, c.category_name 
-                FROM products p 
-                INNER JOIN categories c ON p.category_id = c.category_id";
-        if (!empty($category)) {
-            $categoryList = implode(',', get_category_list($conn, $category));
-            $sql .= " WHERE p.category_id IN ($categoryList)";
-        }
-        $sql .= " ORDER BY p.product_id DESC $limitClause $offset";
+    function product_list($conn,$sql) {
+        $details='';
     
         // Execute the query
         $result = mysqli_query($conn, $sql);
@@ -59,5 +41,13 @@
         }
         
         return $categoryList;
+    }
+    function get_customername($conn, $id){
+        $select = "SELECT * FROM customers WHERE customer_id = '$id'";
+        $result = mysqli_query($conn, $select);
+        if(mysqli_num_rows($result) > 0){
+            $row = mysqli_fetch_array($result);
+            return isset($row['m_name'])?$row['f_name'].' '.$row['m_name'].' '.$row['l_name']:$row['f_name'].' '.$row['l_name'];
+        }
     }
 ?>
